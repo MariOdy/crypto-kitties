@@ -14,6 +14,9 @@ module.exports = {
     "import/resolver": {
       typescript: {},
     },
+    react: {
+      version: "detect",
+    },
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
