@@ -1,5 +1,5 @@
 import React from "react";
-import useCryptoKitties from "../../utils/useCryptoKitties";
+import useCryptoKitties from "utils/useCryptoKitties";
 
 const Catalog: React.FC = () => {
   const { cats, isLoading } = useCryptoKitties();
