@@ -10,18 +10,21 @@ interface CryptoKittiesData {
 
 const useCryptoKitties = () => {
   const [data, setData] = React.useState<CryptoKittiesData | null>(null);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   useEffect(() => {
     const getData = async () => {
+      setIsLoading(true);
       const response = await axios.get<CryptoKittiesData>(
         `https://ftl-cryptokitties.fly.dev/api/crypto_kitties`
       );
+      setIsLoading(false);
       setData(response.data);
     };
     getData();
   }, []);
 
-  return data
+  return { data, isLoading };
 };
 
 export default useCryptoKitties;
