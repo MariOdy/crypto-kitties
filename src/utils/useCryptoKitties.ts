@@ -1,7 +1,12 @@
-import React, { useEffect } from "react";
 import axios from "axios";
 import type Cat from "../interfaces/cat";
 import type PaginationInfo from "../interfaces/paginationInfo";
+import { useQuery } from "@tanstack/react-query";
+
+const getData = () =>
+  axios.get<CryptoKittiesData>(
+    `https://ftl-cryptokitties.fly.dev/api/crypto_kitties`
+  );
 
 interface CryptoKittiesData {
   cats: Cat[];
@@ -9,22 +14,14 @@ interface CryptoKittiesData {
 }
 
 const useCryptoKitties = () => {
-  const [data, setData] = React.useState<CryptoKittiesData | null>(null);
-  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const { data, ...props } = useQuery(["crypto_kitties"], getData);
 
-  useEffect(() => {
-    const getData = async () => {
-      setIsLoading(true);
-      const response = await axios.get<CryptoKittiesData>(
-        `https://ftl-cryptokitties.fly.dev/api/crypto_kitties`
-      );
-      setIsLoading(false);
-      setData(response.data);
-    };
-    getData();
-  }, []);
-
-  return { data, isLoading };
+  return {
+    data,
+    cats: data?.data?.cats,
+    pagination_info: data?.data?.pagination_info,
+    ...props,
+  };
 };
 
 export default useCryptoKitties;
