@@ -6,12 +6,12 @@ import Tilt from "react-parallax-tilt";
 import {
   CatalogWrapper,
   KittiesList,
-  SortBar,
   StyledContent,
   StyledOverlay,
 } from "./styles";
 import type Cat from "interfaces/cat";
 import { AnimatePresence } from "framer-motion";
+import SortBar from "components/SortBar/SortBar";
 
 const Catalog: React.FC = () => {
   const { cats, isLoading } = useCryptoKitties();
@@ -23,7 +23,7 @@ const Catalog: React.FC = () => {
     <Dialog.Root open={!!selectedCat} onOpenChange={onClose}>
       <CatalogWrapper>
         {isLoading && <div>Loading...</div>}
-        <SortBar>sort nav</SortBar>
+        <SortBar />
         <KittiesList>
           {cats?.map((cat) => (
             <li key={cat.id}>
@@ -33,6 +33,7 @@ const Catalog: React.FC = () => {
         </KittiesList>
       </CatalogWrapper>
 
+      {/* Card animation */}
       <AnimatePresence>
         <Dialog.Portal forceMount>
           {selectedCat && (

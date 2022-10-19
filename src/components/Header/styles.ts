@@ -10,7 +10,7 @@ export const HeaderWrapper = styled.header`
 export const Logo = styled.h2`
   background-image: linear-gradient(
     to right,
-    #FE7D7D,
+    #fe7d7d,
     #ffe484,
     #8cf8ff,
     #ff8080

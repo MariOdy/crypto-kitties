@@ -11,15 +11,6 @@ export const CatalogWrapper = styled.div`
   margin: 30px auto;
 `;
 
-export const SortBar = styled.nav`
-  width: 100%;
-  height: 40px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 export const KittiesList = styled.ul`
   width: 100%;
   display: grid;
