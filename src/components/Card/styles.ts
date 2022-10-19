@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const CardWrapper = styled.li`
+export const CardWrapper = styled(motion.div)`
   --card-color: var(--yellow);
 
   width: fit-content;
@@ -62,7 +63,6 @@ export const CatInfo = styled.div`
 
     h4 {
       font-size: 14px;
-     
     }
     h5 {
       color: #404040;

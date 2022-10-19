@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useCallback } from "react";
 import type Cat from "interfaces/cat";
 import { CardWrapper, CatInfo, ImageWrapper } from "./styles";
 
 interface CardProps {
   cat: Cat;
+  onClick?: (cat: Cat) => void;
 }
 
-const Card: React.FC<CardProps> = ({ cat }) => {
+const Card: React.FC<CardProps> = ({ cat, onClick }) => {
+  const handleClick = useCallback(() => onClick?.(cat), [cat]);
+
   if (!cat) return null;
 
   return (
-    <CardWrapper data-type={cat.category}>
+    <CardWrapper
+      data-type={cat.category}
+      layoutId={String(cat.id)}
+      onClick={handleClick}
+    >
       <ImageWrapper>
         <img src={cat.image_url} alt={cat.name} loading="lazy" />
       </ImageWrapper>
