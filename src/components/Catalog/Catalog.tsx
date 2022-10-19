@@ -1,18 +1,21 @@
 import React from "react";
+import Card from "components/Card";
 import useCryptoKitties from "utils/useCryptoKitties";
+import { CatalogWrapper, KittiesList, SortBar } from "./styles";
 
 const Catalog: React.FC = () => {
   const { cats, isLoading } = useCryptoKitties();
 
   return (
-    <div className="Catalog">
+    <CatalogWrapper>
       {isLoading && <div>Loading...</div>}
-      <ul>
+      <SortBar>sort nav</SortBar>
+      <KittiesList>
         {cats?.map((cat) => (
-          <li key={cat.id}>{cat.name}</li>
+          <Card key={cat.id} cat={cat}  />
         ))}
-      </ul>
-    </div>
+      </KittiesList>
+    </CatalogWrapper>
   );
 };
 
