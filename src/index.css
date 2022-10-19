@@ -3,3 +3,18 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font-family: Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: Helvetica;
+  src: url(/public/fonts/Helvetica.ttf);
+}
+
+@font-face {
+  font-family: Helvetica;
+  src: url(/public/fonts/Helvetica-Bold.ttf);
+  font-weight: 700;
+}
