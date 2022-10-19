@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import * as Dialog from "@radix-ui/react-dialog";
+import { CardWrapper, CatInfo, ImageWrapper } from "components/Card/styles";
 
 export const CatalogWrapper = styled.div`
   display: flex;
@@ -46,6 +47,27 @@ export const StyledContent = styled(Dialog.Content)`
   transform: translate(-50%, -50%);
   outline: none;
   width: fit-content;
+
+  & ${CardWrapper} {
+    padding: 26px;
+  }
+
+  & ${ImageWrapper} {
+    width: 400px;
+    height: 400px;
+  }
+  & ${CatInfo} {
+    h2 {
+      font-size: 44px;
+    }
+    h4 {
+      font-size: 28px;
+    }
+    h5 {
+      padding: 12px 24px;
+      font-size: 32px;
+    }
+  }
 
   &[data-state="closed"] {
     opacity: 0;
