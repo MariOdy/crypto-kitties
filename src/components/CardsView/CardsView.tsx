@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
-import { AnimatePresence } from "framer-motion";
-import Tilt from "react-parallax-tilt";
-
 import type Cat from "interfaces/cat";
 import CardsGrid from "components/CardsGrid";
 import InViewTrigger from "components/InViewTrigger";
-import Card from "components/Card";
-
-import { CardsViewWrapper, StyledContent, StyledOverlay } from "./styles";
+import { CardsViewWrapper } from "./styles";
+import CardPreview from "./CardPreview";
 
 interface CardsViewProps {
   cats: Cat[] | undefined;
@@ -28,7 +23,7 @@ const CardsView: React.FC<CardsViewProps> = ({
   const onClose = () => setSelectedCat(null);
 
   return (
-    <Dialog.Root open={!!selectedCat} onOpenChange={onClose}>
+    <>
       <CardsViewWrapper>
         <CardsGrid cats={cats} onClick={setSelectedCat} />
         {isLoading && <div>Loading...</div>}
@@ -37,22 +32,8 @@ const CardsView: React.FC<CardsViewProps> = ({
         )}
       </CardsViewWrapper>
 
-      {/* Card animation */}
-      <AnimatePresence>
-        <Dialog.Portal forceMount>
-          {selectedCat && (
-            <>
-              <StyledOverlay />
-              <StyledContent>
-                <Tilt>
-                  <Card cat={selectedCat} />
-                </Tilt>
-              </StyledContent>
-            </>
-          )}
-        </Dialog.Portal>
-      </AnimatePresence>
-    </Dialog.Root>
+      <CardPreview cat={selectedCat} onClose={onClose} />
+    </>
   );
 };
 
