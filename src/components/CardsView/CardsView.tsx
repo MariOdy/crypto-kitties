@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import type Cat from "interfaces/cat";
 import CardsGrid from "components/CardsGrid";
 import InViewTrigger from "components/InViewTrigger";
-import { CardsViewWrapper } from "./styles";
+import { CardsViewWrapper, LoaderWrapper } from "./styles";
 import CardPreview from "./CardPreview";
 
 interface CardsViewProps {
@@ -26,7 +26,11 @@ const CardsView: React.FC<CardsViewProps> = ({
     <>
       <CardsViewWrapper>
         <CardsGrid cats={cats} onClick={setSelectedCat} />
-        {isLoading && <div>Loading...</div>}
+        {isLoading && (
+          <LoaderWrapper>
+            <div className="loader"></div>
+          </LoaderWrapper>
+        )}
         {hasMore && fetchMoreData && (
           <InViewTrigger onInView={fetchMoreData} active={!isLoading} />
         )}
