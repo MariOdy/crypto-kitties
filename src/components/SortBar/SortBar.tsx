@@ -5,22 +5,22 @@ import {
   SortBarWrapper,
   SortType,
 } from "./styles";
-import { BsChevronExpand } from "react-icons/bs";
+import { IoChevronUp } from "react-icons/io5";
 
 const sortByArr = [
   { value: "name", label: "Name" },
   { value: "price", label: "Price" },
+  { value: "category", label: "Category" },
 ];
 
 const Sort: React.FC = () => {
   return (
     <SortType>
-      <h3>Sort By:</h3>
       <RadioGroupStyled>
         {sortByArr.map(({ label, value }) => (
           <RadioItemStyled value={value} key={value}>
             {label}
-            <BsChevronExpand />
+            <IoChevronUp />
           </RadioItemStyled>
         ))}
       </RadioGroupStyled>

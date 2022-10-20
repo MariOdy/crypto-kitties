@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
-export const CatalogWrapper = styled.div`
+export const HomePageWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 8px;
-  width: 90%;
-  margin: 0 auto;
+  gap: 20px;
 `;
