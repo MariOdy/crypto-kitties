@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import * as Dialog from "@radix-ui/react-dialog";
 import { CardWrapper, CatInfo, ImageWrapper } from "components/Card/styles";
+import Tilt from "react-parallax-tilt";
 
 export const CatalogWrapper = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ export const CatalogWrapper = styled.div`
   align-items: center;
   gap: 30px;
   width: 90%;
-  margin: 30px auto;
+  margin: 12px auto;
 `;
 
 export const KittiesList = styled.ul`
@@ -21,7 +22,7 @@ export const KittiesList = styled.ul`
 `;
 
 export const StyledOverlay = styled(Dialog.Overlay)`
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   inset: 0;
 

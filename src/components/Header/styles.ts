@@ -20,8 +20,9 @@ export const Logo = styled.h2`
   animation: move 800s linear infinite;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 70px;
+  font-size: 6vw;
   font-family: "Dela Gothic One", cursive;
+  padding: 12px;
 
   @keyframes move {
     to {

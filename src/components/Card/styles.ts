@@ -14,6 +14,7 @@ export const CardWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  cursor: pointer;
 
   &[data-type="middle"] {
     --card-color: var(--yellow);
