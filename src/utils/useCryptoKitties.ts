@@ -12,8 +12,8 @@ interface CryptoKittiesData {
   pagination_info: PaginationInfo;
 }
 
-type SortableProps = `id` | `name` | `category` | `price`;
-type SortableDirection = `asc` | `desc`;
+export type SortableProps = `id` | `name` | `category` | `price`;
+export type SortableDirection = `asc` | `desc`;
 
 interface GetDataProps {
   pageParam?: number;
