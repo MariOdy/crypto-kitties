@@ -6,7 +6,7 @@ import { CardsViewWrapper } from "./styles";
 import CardPreview from "./CardPreview";
 
 interface CardsViewProps {
-  cats: Cat[] | undefined;
+  cats: Cat[] | null;
   isLoading?: boolean;
   hasMore?: boolean;
   fetchMoreData?: () => void;

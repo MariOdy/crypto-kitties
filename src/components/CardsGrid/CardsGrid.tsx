@@ -4,7 +4,7 @@ import { KittiesList } from "./styles";
 import Card from "components/Card/Card";
 
 interface CardsGridProps {
-  cats: Cat[] | undefined;
+  cats: Cat[] | null;
   onClick?: (cat: Cat) => void;
 }
 
