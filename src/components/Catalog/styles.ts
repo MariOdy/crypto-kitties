@@ -12,15 +12,6 @@ export const CatalogWrapper = styled.div`
   margin: 12px auto;
 `;
 
-export const KittiesList = styled.ul`
-  width: 100%;
-  display: grid;
-  justify-items: center;
-  padding: 16px;
-  row-gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-`;
-
 export const StyledOverlay = styled(Dialog.Overlay)`
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
