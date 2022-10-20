@@ -40,6 +40,7 @@ export const RadioItemStyled = styled(RadioGroup.Item)`
   gap: 6px;
   border: none;
 
+  color: #4a4a4a;
   background-color: transparent;
   border-radius: 20px;
   text-transform: uppercase;

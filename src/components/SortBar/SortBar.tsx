@@ -5,7 +5,7 @@ import {
   SortBarWrapper,
   SortType,
 } from "./styles";
-import { IoChevronDown, IoChevronUp } from "react-icons/io5";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { SortableDirection, SortableProps } from "utils/useCryptoKitties";
 
 interface SortBarProps {
@@ -40,7 +40,7 @@ const SortBar: React.FC<SortBarProps> = ({
               }}
             >
               {label}
-              {sortDirection === "asc" ? <IoChevronUp /> : <IoChevronDown />}
+              {sortDirection === "asc" ? <FaArrowUp /> : <FaArrowDown />}
             </RadioItemStyled>
           ))}
         </RadioGroupStyled>
