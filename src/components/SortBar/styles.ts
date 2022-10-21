@@ -2,11 +2,12 @@ import styled from "styled-components";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 
 export const SortBarWrapper = styled.div`
-  width: 96%;
+  align-items: center;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 14px;
+  overflow: auto;
+  width: 100%;
 
   border-bottom: 2px solid transparent;
   border-image: linear-gradient(
@@ -18,6 +19,16 @@ export const SortBarWrapper = styled.div`
     #fd1892 100%
   );
   border-image-slice: 1;
+
+  /* For tablets and phones */
+  @media (max-width: 570px) {
+    justify-content: center;
+  }
+
+  /* For  Galaxy Fold screens*/
+  @media (max-width: 335px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const SortType = styled.div`
@@ -36,7 +47,7 @@ export const RadioItemStyled = styled(RadioGroup.Item)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 16px;
+  padding: 6px 14px;
   gap: 6px;
   border: none;
 
@@ -44,7 +55,7 @@ export const RadioItemStyled = styled(RadioGroup.Item)`
   background-color: transparent;
   border-radius: 20px;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 90%;
   font-weight: 700;
   cursor: pointer;
 

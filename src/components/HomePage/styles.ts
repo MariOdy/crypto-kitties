@@ -5,5 +5,4 @@ export const HomePageWrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  gap: 20px;
 `;

@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.header`
-  width: 90%;
-  margin: 0 auto;
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex: 1 0;
+  margin: 0 auto;
+  width: 100%;
 `;
 
-export const Logo = styled.h2`
+export const Logo = styled.a`
   background-image: linear-gradient(
     to right,
     #fe7d7d,
@@ -25,9 +25,9 @@ export const Logo = styled.h2`
   text-transform: uppercase;
 
   font-weight: 700;
-  font-size: 6vw;
+  font-size: 7vw;
   font-family: "Dela Gothic One", cursive;
-  padding: 20px;
+  padding: 5% 2%;
 
   @keyframes move {
     to {

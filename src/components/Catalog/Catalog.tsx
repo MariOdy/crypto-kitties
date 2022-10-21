@@ -21,8 +21,8 @@ const Catalog: React.FC = () => {
     []
   );
 
-  const { cats, isFetchingNextPage, hasNextPage, fetchNextPage } =
-    useCryptoKitties({sortBy: sortType, sortDir: sortDirection});
+  const { cats, isFetchingNextPage, hasNextPage, fetchNextPage, isLoading } =
+    useCryptoKitties({ sortBy: sortType, sortDir: sortDirection });
 
   return (
     <CatalogWrapper>
@@ -33,7 +33,7 @@ const Catalog: React.FC = () => {
       />
       <CardsView
         cats={cats}
-        isLoading={isFetchingNextPage}
+        isLoading={isFetchingNextPage || isLoading}
         hasMore={hasNextPage}
         fetchMoreData={fetchNextPage}
       />

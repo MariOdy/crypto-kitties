@@ -4,7 +4,7 @@ import { HeaderWrapper, Logo } from "./styles";
 const Header: React.FC = () => {
   return (
     <HeaderWrapper>
-      <Logo>CryptoKitties</Logo>
+      <Logo href="/">CryptoKitties</Logo>
     </HeaderWrapper>
   );
 };

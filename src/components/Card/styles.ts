@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export const CardWrapper = styled(motion.div)`
   --card-color: var(--yellow);
 
-  width: fit-content;
+  width: 100%;
   height: auto;
   padding: 15px;
   border-radius: 2px;
@@ -31,15 +31,16 @@ export const CardWrapper = styled(motion.div)`
 `;
 
 export const ImageWrapper = styled.div`
-  width: 200px;
-  height: 200px;
+  aspect-ratio: 1/1;
   border-radius: 2px;
 
   background: var(--card-color);
 
   img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
   }
 `;
 
@@ -48,6 +49,7 @@ export const CatInfo = styled.div`
   display: flex;
   flex-direction: column;
   text-transform: uppercase;
+  padding: 8px 0;
 
   h2 {
     font-weight: 700;

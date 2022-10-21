@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import * as Dialog from "@radix-ui/react-dialog";
-import { CardWrapper, CatInfo, ImageWrapper } from "components/Card/styles";
+import { CardWrapper } from "components/Card/styles";
 
 export const CardsViewWrapper = styled.div`
   position: relative;
@@ -9,16 +9,16 @@ export const CardsViewWrapper = styled.div`
 
 const roll = keyframes`
   0% {
-      transform: translateX(-150%) rotate(0deg) ;
+      transform: translateX(-200%) rotate(0deg) ;
     }
     100% {
-      transform:  translateX(150%) rotate(360deg);
+      transform:  translateX(200%) rotate(360deg);
     }
 `;
 
 export const LoaderWrapper = styled.div`
   width: 100%;
-  height: 50vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,15 +37,16 @@ export const LoaderWrapper = styled.div`
     );
     border-radius: 50%;
     position: relative;
-    animation: ${roll} 1s ease-in-out infinite alternate;
-  }
-  .loader:after {
-    content: "";
-    position: absolute;
-    inset: 5px;
-    border-radius: 50%;
-    border: 5px solid;
-    border-color: #fff transparent;
+    animation: ${roll} 0.8s ease-in-out infinite alternate;
+
+    &:after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      border: 5px solid;
+      border-color: #fff transparent;
+    }
   }
 `;
 
@@ -69,24 +70,8 @@ export const StyledContent = styled(Dialog.Content)`
   width: fit-content;
 
   & ${CardWrapper} {
-    padding: 26px;
-  }
-
-  & ${ImageWrapper} {
-    width: 400px;
-    height: 400px;
-  }
-  & ${CatInfo} {
-    h2 {
-      font-size: 44px;
-    }
-    h4 {
-      font-size: 28px;
-    }
-    h5 {
-      padding: 12px 24px;
-      font-size: 32px;
-    }
+    width: 90vw;
+    max-width: 320px;
   }
 
   &[data-state="closed"] {

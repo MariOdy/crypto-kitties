@@ -20,7 +20,7 @@ const CardPreview: React.FC<CardPreviewProps> = ({ cat, onClose }) => {
             <>
               <StyledOverlay />
               <StyledContent>
-                <Tilt>
+                <Tilt scale={1.2}>
                   <Card cat={cat} />
                 </Tilt>
               </StyledContent>
