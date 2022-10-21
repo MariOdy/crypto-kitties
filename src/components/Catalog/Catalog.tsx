@@ -1,28 +1,19 @@
-import React, { useCallback } from "react";
-import useCryptoKitties, {
-  SortableDirection,
-  SortableProps,
-} from "utils/useCryptoKitties";
-import { CatalogWrapper } from "./styles";
+import React from "react";
+import useSorting from "utils/useSorting";
+import useCryptoKitties from "utils/useCryptoKitties";
 
 import SortBar from "components/SortBar/SortBar";
 import CardsView from "components/CardsView/CardsView";
 
+import { CatalogWrapper } from "./styles";
+
 const Catalog: React.FC = () => {
-  const [sortType, setSortType] = React.useState<SortableProps>("name");
-  const [sortDirection, setSortDirection] =
-    React.useState<SortableDirection>("asc");
+  const { sortType, sortDirection, setSorting } = useSorting();
 
-  const setSorting = useCallback(
-    (type: SortableProps, direction: SortableDirection = "asc") => {
-      setSortType(type);
-      setSortDirection(direction);
-    },
-    []
-  );
-
-  const { cats, isFetchingNextPage, hasNextPage, fetchNextPage, isLoading } =
-    useCryptoKitties({ sortBy: sortType, sortDir: sortDirection });
+  const { cats, isFetching, hasNextPage, fetchNextPage } = useCryptoKitties({
+    sortBy: sortType,
+    sortDir: sortDirection,
+  });
 
   return (
     <CatalogWrapper>
@@ -33,7 +24,7 @@ const Catalog: React.FC = () => {
       />
       <CardsView
         cats={cats}
-        isLoading={isFetchingNextPage || isLoading}
+        isLoading={isFetching}
         hasMore={hasNextPage}
         fetchMoreData={fetchNextPage}
       />
@@ -41,4 +32,4 @@ const Catalog: React.FC = () => {
   );
 };
 
-export default Catalog;
+export default React.memo(Catalog);

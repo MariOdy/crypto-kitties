@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import axios from "axios";
 import {
   useInfiniteQuery,
@@ -5,21 +6,21 @@ import {
 } from "@tanstack/react-query";
 import type Cat from "interfaces/cat";
 import type PaginationInfo from "interfaces/paginationInfo";
-import { useMemo } from "react";
 
 interface CryptoKittiesData {
   cats: Cat[];
   pagination_info: PaginationInfo;
 }
 
-export type SortableProps = `id` | `name` | `category` | `price`;
-export type SortableDirection = `asc` | `desc`;
+export type SortType = `id` | `name` | `category` | `price`;
+
+export type SortDirection = `asc` | `desc`;
 
 interface GetDataProps {
   pageParam?: number;
   perPage?: number;
-  sortBy?: SortableProps;
-  sortDir?: SortableDirection;
+  sortBy?: SortType;
+  sortDir?: SortDirection;
 }
 
 /** Fetches cryptoKitties data from the API */
@@ -40,8 +41,8 @@ const getData = async ({
 interface UseCryptoKittiesProps
   extends UseInfiniteQueryOptions<CryptoKittiesData> {
   perPage?: number;
-  sortBy?: SortableProps;
-  sortDir?: SortableDirection;
+  sortBy?: SortType;
+  sortDir?: SortDirection;
 }
 
 /** Returns paginated cryptoKitties data */
@@ -62,6 +63,7 @@ const useCryptoKitties = ({
     }
   );
 
+  /** Combine data from all pages */
   const cats = useMemo(() => {
     if (!data) return null;
 

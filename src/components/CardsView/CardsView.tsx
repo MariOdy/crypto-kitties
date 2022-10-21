@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import type Cat from "interfaces/cat";
 import CardsGrid from "components/CardsGrid";
 import InViewTrigger from "components/InViewTrigger";
-import { CardsViewWrapper, LoaderWrapper } from "./styles";
+import Loader from "components/Loader/Loader";
 import CardPreview from "./CardPreview";
+import { CardsViewWrapper } from "./styles";
 
 interface CardsViewProps {
   cats: Cat[] | null;
@@ -20,17 +21,13 @@ const CardsView: React.FC<CardsViewProps> = ({
 }) => {
   const [selectedCat, setSelectedCat] = useState<Cat | null>(null);
 
-  const onClose = () => setSelectedCat(null);
+  const onClose = useCallback(() => setSelectedCat(null), []);
 
   return (
     <>
       <CardsViewWrapper>
         <CardsGrid cats={cats} onClick={setSelectedCat} />
-        {isLoading && (
-          <LoaderWrapper>
-            <div className="loader"></div>
-          </LoaderWrapper>
-        )}
+        {isLoading && <Loader />}
         {hasMore && fetchMoreData && (
           <InViewTrigger onInView={fetchMoreData} active={!isLoading} />
         )}
@@ -41,4 +38,4 @@ const CardsView: React.FC<CardsViewProps> = ({
   );
 };
 
-export default CardsView;
+export default React.memo(CardsView);

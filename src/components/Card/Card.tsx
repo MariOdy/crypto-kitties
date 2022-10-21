@@ -12,24 +12,26 @@ const Card: React.FC<CardProps> = ({ cat, onClick }) => {
 
   if (!cat) return null;
 
+  const { id, name, image_url, category, price } = cat;
+
   return (
     <CardWrapper
-      data-type={cat.category}
-      layoutId={String(cat.id)}
+      data-type={category}
+      layoutId={String(id)}
       onClick={handleClick}
     >
       <ImageWrapper>
-        <img src={cat.image_url} alt={cat.name} loading="lazy" />
+        <img src={image_url} alt={name} loading="lazy" />
       </ImageWrapper>
       <CatInfo>
-        <h2>{cat.name}</h2>
+        <h2>{name}</h2>
         <div className="category_price">
-          <h4>{cat.category}</h4>
-          <h5>${cat.price}</h5>
+          <h4>{category}</h4>
+          <h5>${price}</h5>
         </div>
       </CatInfo>
     </CardWrapper>
   );
 };
 
-export default Card;
+export default React.memo(Card);

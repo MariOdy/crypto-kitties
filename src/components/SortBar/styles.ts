@@ -5,6 +5,7 @@ export const SortBarWrapper = styled.div`
   align-items: center;
   display: flex;
   justify-content: flex-start;
+  margin-bottom: 8px;
   padding-bottom: 14px;
   overflow: auto;
   width: 100%;

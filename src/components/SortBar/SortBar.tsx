@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
   RadioGroupStyled,
   RadioItemStyled,
@@ -6,12 +6,12 @@ import {
   SortType,
 } from "./styles";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
-import { SortableDirection, SortableProps } from "utils/useCryptoKitties";
+import { SortDirection, SortType as ISortType } from "utils/useCryptoKitties";
 
 interface SortBarProps {
-  sortType: SortableProps;
-  sortDirection: SortableDirection;
-  setSorting: (type: SortableProps, direction: SortableDirection) => void;
+  sortType: ISortType;
+  sortDirection: SortDirection;
+  setSorting: (type: ISortType, direction: SortDirection) => void;
 }
 
 const sortByArr = [
@@ -19,34 +19,38 @@ const sortByArr = [
   { value: "price", label: "Price" },
   { value: "category", label: "Category" },
 ];
+
 const SortBar: React.FC<SortBarProps> = ({
   sortType,
   sortDirection,
   setSorting,
 }) => {
-  const handleValueChange = (value: SortableProps) => setSorting(value, "asc");
+  const handleValueChange = useCallback(
+    (value: ISortType) => setSorting(value, "asc"),
+    [setSorting]
+  );
 
   return (
     <SortBarWrapper>
       <SortType>
         <RadioGroupStyled value={sortType} onValueChange={handleValueChange}>
-          {sortByArr.map(({ label, value }) => (
-            <RadioItemStyled
-              value={value}
-              key={value}
-              onClick={() => {
-                if (sortType === value)
-                  setSorting(value, sortDirection === "asc" ? "desc" : "asc");
-              }}
-            >
-              {label}
-              {sortDirection === "asc" ? <FaArrowUp /> : <FaArrowDown />}
-            </RadioItemStyled>
-          ))}
+          {sortByArr.map(({ label, value }) => {
+            const onClick = () => {
+              if (sortType === value)
+                setSorting(value, sortDirection === "asc" ? "desc" : "asc");
+            };
+
+            return (
+              <RadioItemStyled value={value} key={value} onClick={onClick}>
+                {label}
+                {sortDirection === "asc" ? <FaArrowUp /> : <FaArrowDown />}
+              </RadioItemStyled>
+            );
+          })}
         </RadioGroupStyled>
       </SortType>
     </SortBarWrapper>
   );
 };
 
-export default SortBar;
+export default React.memo(SortBar);

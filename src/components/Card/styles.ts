@@ -4,17 +4,17 @@ import { motion } from "framer-motion";
 export const CardWrapper = styled(motion.div)`
   --card-color: var(--yellow);
 
-  width: 100%;
-  height: auto;
-  padding: 15px;
   border-radius: 2px;
+  cursor: pointer;
+  height: 100%;
+  padding: 15px;
+  width: 100%;
 
-  background-color: #ffffff;
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  cursor: pointer;
 
   &[data-type="middle"] {
     --card-color: var(--yellow);
@@ -45,11 +45,11 @@ export const ImageWrapper = styled.div`
 `;
 
 export const CatInfo = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   text-transform: uppercase;
   padding: 8px 0;
+  width: 100%;
 
   h2 {
     font-weight: 700;
@@ -57,21 +57,22 @@ export const CatInfo = styled.div`
   }
 
   .category_price {
-    width: 100%;
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    width: 100%;
 
     h4 {
       font-size: 14px;
     }
+
     h5 {
-      color: #404040;
-      padding: 6px 12px;
+      background: var(--card-color);
       border-radius: 2px;
+      color: #404040;
       font-size: 16px;
       font-weight: 700;
-      background: var(--card-color);
+      padding: 6px 12px;
     }
   }
 `;

@@ -1,35 +1,31 @@
 import React from "react";
-import { AnimatePresence } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import { AnimatePresence } from "framer-motion";
 import * as Dialog from "@radix-ui/react-dialog";
 import Card from "components/Card/Card";
-import { StyledContent, StyledOverlay } from "./styles";
 import type Cat from "interfaces/cat";
+import { StyledContent, StyledOverlay } from "./styles";
 
 interface CardPreviewProps {
   cat: Cat | null;
   onClose: () => void;
 }
 
-const CardPreview: React.FC<CardPreviewProps> = ({ cat, onClose }) => {
-  return (
-    <Dialog.Root open={!!cat} onOpenChange={onClose}>
-      <AnimatePresence>
+const CardPreview: React.FC<CardPreviewProps> = ({ cat, onClose }) => (
+  <Dialog.Root open={!!cat} onOpenChange={onClose}>
+    <AnimatePresence>
+      {cat && (
         <Dialog.Portal forceMount>
-          {cat && (
-            <>
-              <StyledOverlay />
-              <StyledContent>
-                <Tilt scale={1.2}>
-                  <Card cat={cat} />
-                </Tilt>
-              </StyledContent>
-            </>
-          )}
+          <StyledOverlay />
+          <StyledContent>
+            <Tilt scale={1.2}>
+              <Card cat={cat} />
+            </Tilt>
+          </StyledContent>
         </Dialog.Portal>
-      </AnimatePresence>
-    </Dialog.Root>
-  );
-};
+      )}
+    </AnimatePresence>
+  </Dialog.Root>
+);
 
-export default CardPreview;
+export default React.memo(CardPreview);

@@ -1,7 +1,7 @@
 import React from "react";
 import type Cat from "interfaces/cat";
-import { KittiesList } from "./styles";
 import Card from "components/Card/Card";
+import { KittiesList } from "./styles";
 
 interface CardsGridProps {
   cats: Cat[] | null;
@@ -22,4 +22,4 @@ const CardsGrid: React.FC<CardsGridProps> = ({ cats, onClick }) => {
   );
 };
 
-export default CardsGrid;
+export default React.memo(CardsGrid);
